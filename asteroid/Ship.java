@@ -48,13 +48,12 @@ public class Ship extends Polygon implements KeyListener {
 	
 	public void move() {
 
-		// Check forward movement
+	// Check forward movement
         if(forward) {
         	
             position.x += 3 * Math.cos(Math.toRadians(rotation));
             position.y += 3 * Math.sin(Math.toRadians(rotation));
             
-            // This code was developed in milestone 2
             if(position.x > Asteroids.SCREEN_WIDTH) {
                 position.x -= Asteroids.SCREEN_WIDTH;
             } else if(position.x < 0) {
