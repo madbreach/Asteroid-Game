@@ -1,9 +1,7 @@
 
 /*
-CLASS: Asteroids
-DESCRIPTION: Extending Game, Asteroids is all in the paint method.
-NOTE: This class is the metaphorical "main method" of your program,
-      it is your control center.
+Asteroids - creates asteroid game by utilizing other files.
+
 Original code by Dan Leyzberg and Art Simon
  */
 import java.awt.*;
@@ -16,8 +14,6 @@ public class Asteroids extends Game {
 	private static final int COLLISION_PERIOD = 100;
 	
 	private double stardet;
-	
-
 
 	static int counter = 0;
 	
@@ -30,7 +26,6 @@ public class Asteroids extends Game {
 	private java.util.List<Asteroid> randomAsteroids = new ArrayList<Asteroid>();
 	
 	private Ship ship;
-	
 	
 
 	public Asteroids() {
@@ -50,9 +45,8 @@ public class Asteroids extends Game {
 		stars = createStars(200,3);
 	}
 	
-	// private helper method to create the Ship
 	private Ship createShip() {
-        // Look of ship
+        // Ship Design
         Point[] shipShape = {
                 new Point(0, 0),
                 new Point(Ship.SHIP_WIDTH/3.5, Ship.SHIP_HEIGHT/2),
@@ -72,7 +66,6 @@ public class Asteroids extends Game {
 
 		for(int i = 0; i < numberOfAsteroids; ++i) {
 			// Create random asteroids by sampling points on a circle
-			// Find the radius first.
 			int radius = (int) (Math.random() * maxAsteroidWidth);
 			if(radius < minAsteroidWidth) {
 				radius += minAsteroidWidth;
@@ -104,7 +97,6 @@ public class Asteroids extends Game {
 		brush.setColor(Color.black);
 		brush.fillRect(0,0,width,height);
 
-		// sample code for printing message for debugging
 		// counter is incremented and this message printed
 		// each time the canvas is repainted
 		counter++;
@@ -123,25 +115,6 @@ public class Asteroids extends Game {
 			
 		}
 		
-		
-	
-		/**
-		 * The above for loop (known as a "for each" loop)
-		 * is equivalent to what is shown below.
-		 */
-
-		/**
-		for (int i = 0; i < randomAsteroids.size(); i++) {
-			randomAsteroids.get(i).paint(brush, Color.white);
-			randomAsteroids.get(i).move();
-
-		}
-		*/
-		
-		 /**
-		  * If there is a collision paint the ship a different color and track collision time.
-		  * After the period of time has elapsed, set the ship back to its default color.
-		  */
        if(collision) {
            ship.paint(brush, Color.red);
            collisionTime -= 1;
